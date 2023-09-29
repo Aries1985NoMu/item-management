@@ -54,4 +54,15 @@ class ItemController extends Controller
 
         return view('item.add');
     }
+
+    /**
+     * 商品削除
+     */
+    public function delete(Request $requset)
+    {
+        $item = Item::find($requset->id);
+        $item->delete();
+
+        return redirect('/items');
+    }
 }
