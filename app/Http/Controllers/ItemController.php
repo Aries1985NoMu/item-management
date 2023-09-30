@@ -65,4 +65,38 @@ class ItemController extends Controller
 
         return redirect('/items');
     }
+
+    /**
+     * 商品編集
+     */
+    public function edit($id)
+    {
+        $item = Item::find($id);
+        if(!$item) {
+            return redirect('/items')->with('error', '指定された商品は存在しません');
+        }
+        
+        return view('item.edit', compact('item'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $item = Item::find($id);
+        if(!$item) {
+            return redirect('/items')->with('error', '指定された商品は存在しません');
+        }
+
+        $inputs = $request->validate([
+            'name' => 'required|max:100',
+            'type' => 'required',
+            'detail' => 'required',
+        ]);
+
+        $item->name = $inputs['name'];
+        $item->type = $inputs['type'];
+        $item->detail = $inputs['detail'];
+        $item->save();
+
+        return redirect('/items')->with('success', '商品が更新されました');
+    }
 }

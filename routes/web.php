@@ -26,4 +26,14 @@ Route::prefix('items')->group(function () {
     Route::get('/add', [App\Http\Controllers\ItemController::class, 'add']);
     Route::post('/add', [App\Http\Controllers\ItemController::class, 'add']);
     Route::post('/delete', [\App\Http\Controllers\ItemController::class, 'delete']);
+    Route::get('/edit/{id}', [App\Http\Controllers\ItemController::class, 'edit'])->name('items.edit');
+    Route::put('/update/{id}', [\App\Http\Controllers\ItemController::class, 'update'])->name('items.update');
+});
+
+// Language Switcher Route 言語切替用ルート
+Route::get('language/{locale}', function ($locale) {
+    app()->setLocale($locale);
+    session()->put('locale', $locale);
+
+    return redirect()->back();
 });

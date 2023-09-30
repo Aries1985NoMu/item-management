@@ -28,7 +28,8 @@
                                 <th>名前</th>
                                 <th>種別</th>
                                 <th>詳細</th>
-                                <th>操作</th>
+                                <th></th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -38,6 +39,9 @@
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->type }}</td>
                                     <td>{{ $item->detail }}</td>
+                                    <td>
+                                        <a href="{{ route('items.edit', ['id'=>$item->id]) }}" class="btn btn-primary">編集</a>
+                                    </td>
                                     <td>
                                         <form action="{{ url('items/delete') }}" method="POST" onsubmit="return confirm('削除します。よろしいですか？');">
                                         @csrf
