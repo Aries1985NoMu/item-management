@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ItemController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,4 +29,12 @@ Route::prefix('items')->group(function () {
     Route::post('/add', [App\Http\Controllers\ItemController::class, 'add']);
     Route::post('/delete', [\App\Http\Controllers\ItemController::class, 'delete']);
     Route::get('/edit/{id}', [ItemController::class, 'edit'])->name('items.edit');
+});
+
+// Language Switcher Route 言語切替用ルート
+Route::get('language/{locale}', function ($locale) {
+    app()->setLocale($locale);
+    session()->put('locale', $locale);
+
+    return redirect()->back();
 });
