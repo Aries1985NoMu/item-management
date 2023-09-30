@@ -46,6 +46,8 @@ class ItemController extends Controller
                 'user_id' => Auth::user()->id,
                 'name' => $request->name,
                 'type' => $request->type,
+                'quantity' => $request->quantity,
+                'price' => $request->price,
                 'detail' => $request->detail,
             ]);
 
@@ -89,11 +91,15 @@ class ItemController extends Controller
         $inputs = $request->validate([
             'name' => 'required|max:100',
             'type' => 'required',
-            'detail' => 'required',
+            'quantity' => 'required',
+            'price' => 'required',
+            'detail' => 'nullable',
         ]);
 
         $item->name = $inputs['name'];
         $item->type = $inputs['type'];
+        $item->quantity = $inputs['quantity'];
+        $item->price = $inputs['price'];
         $item->detail = $inputs['detail'];
         $item->save();
 

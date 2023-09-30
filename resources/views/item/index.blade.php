@@ -27,6 +27,8 @@
                                 <th>ID</th>
                                 <th>名前</th>
                                 <th>種別</th>
+                                <th>個数</th>
+                                <th>価格</th>
                                 <th>詳細</th>
                                 <th></th>
                                 <th></th>
@@ -38,7 +40,9 @@
                                     <td>{{ $item->id }}</td>
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->type }}</td>
-                                    <td>{{ $item->detail }}</td>
+                                    <td>{{ $item->quantity }}</td>
+                                    <td>{{ $item->price }} 円</td>
+                                    <td>{{ Str::limit($item->detail, 50, '...') }}</td>
                                     <td>
                                         <a href="{{ route('items.edit', ['id'=>$item->id]) }}" class="btn btn-primary">編集</a>
                                     </td>

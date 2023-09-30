@@ -34,6 +34,16 @@
                         </div>
 
                         <div class="form-group">
+                            <label for="type">個数</label>
+                            <input type="text" class="form-control" id="quantity" name="quantity" placeholder="個数">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="type">価格</label>
+                            <input type="text" class="form-control" id="price" name="price" placeholder="価格">
+                        </div>
+
+                        <div class="form-group">
                             <label for="detail">詳細</label>
                             <input type="text" class="form-control" id="detail" name="detail" placeholder="詳細説明">
                         </div>

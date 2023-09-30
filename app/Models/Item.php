@@ -15,6 +15,8 @@ class Item extends Model
         'user_id',
         'name',
         'type',
+        'quantity',
+        'price',
         'detail',
     ];
 
