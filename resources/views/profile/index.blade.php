@@ -20,7 +20,9 @@
                                 <th>ID</th>
                                 <th>名前</th>
                                 <th>Email</th>
-                                <th>詳細</th>
+                                @can('admin')
+                                    <th>詳細</th>
+                                @endcan
                             </tr>
                         </thead>
                         <tbody>
@@ -29,7 +31,9 @@
                                     <td>{{ $user->id }}</td>
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
-                                    <td></td>
+                                    @can('admin')
+                                        <td></td>
+                                    @endcan
                                 </tr>
                             @endforeach
                         </tbody>
