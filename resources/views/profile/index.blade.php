@@ -41,6 +41,12 @@
                 </div>
             </div>
         </div>
+        {{-- ページネーション --}}
+        @if ($users->hasPages())
+            <div class="card-footer clearfix">
+                {{ $users->links() }}
+            </div>
+        @endif
     </div>
 @stop
 

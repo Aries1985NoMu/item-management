@@ -24,7 +24,7 @@ class ItemController extends Controller
     public function index()
     {
         // 商品一覧取得
-        $items = Item::all();
+        $items = Item::paginate(5);
 
         return view('item.index', compact('items'));
     }
@@ -39,6 +39,8 @@ class ItemController extends Controller
             // バリデーション
             $this->validate($request, [
                 'name' => 'required|max:100',
+                'quantity' => 'integer',
+                'price' => 'integer',
             ]);
 
             // 商品登録
