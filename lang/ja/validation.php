@@ -60,7 +60,7 @@ return [
     'image' => ':attributeには画像ファイルを指定してください。',
     'in' => '選択された:attributeは正しくありません。',
     'in_array' => ':attributeには:otherの値を指定してください。',
-    'integer' => ':attributeは整数で指定してください。',
+    'integer' => ':attributeは半角数字で指定してください。',
     'ip' => ':attributeには、有効なIPアドレスを指定してください。',
     'ipv4' => ':attributeには、有効なIPv4アドレスを指定してください。',
     'ipv6' => ':attributeには、有効なIPv6アドレスを指定してください。',
@@ -247,6 +247,7 @@ return [
         'updated_at' => '更新日',
         'username' => 'ユーザー名',
         'year' => '年',
+        'quantity' => '個数',
     ],
 
 ];
