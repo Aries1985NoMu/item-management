@@ -32,6 +32,9 @@ Route::prefix('items')->group(function () {
 
 Route::prefix('profile')->group(function () {
     Route::get('/', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile.index');
+    Route::get('/', [App\Http\Controllers\ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/', [App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/', [App\Http\Controllers\ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
 // Language Switcher Route 言語切替用ルート
