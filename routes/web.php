@@ -29,6 +29,7 @@ Route::prefix('items')->group(function () {
     Route::post('/add', [App\Http\Controllers\ItemController::class, 'add']);
     Route::post('/delete', [\App\Http\Controllers\ItemController::class, 'delete']);
     Route::get('/edit/{id}', [ItemController::class, 'edit'])->name('items.edit');
+    Route::post('/update/{id}', [ItemController::class, 'update'])->name('items.update');
 });
 
 // Language Switcher Route 言語切替用ルート

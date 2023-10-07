@@ -33,4 +33,16 @@ class Item extends Model
      */
     protected $casts = [
     ];
+
+    /**
+     * 更新処理
+     */
+    public function updateItem($request, $item)
+    {
+        $result = $item->fill([
+            'name' => $request->name
+        ])->save();
+
+        return $result;
+    }
 }

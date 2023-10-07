@@ -65,4 +65,44 @@ class ItemController extends Controller
 
         return redirect('/items');
     }
+
+    /**
+     * 編集画面
+     */
+    public function edit($id)
+    {
+        $item = Item::find($id);
+
+        return view('item.edit', compact('item'));
+    }
+
+    /**
+     * 更新処理
+     */
+    public function update(Request $request, $id)
+    {
+        // バリデーション
+        $this->validate($request, [
+            'name' => 'required|max:100',
+            // 他のフィールドに対するバリデーションルールを追加
+        ]);
+
+        // 更新対象の商品を取得
+        $item = Item::find($id);
+
+        if (!$item) {
+            // 商品が見つからない場合のエラーハンドリングを行う
+            return redirect()->route('item.index')->with('error', '指定された商品が見つかりません');
+        }
+
+        // フォームから送信されたデータで商品情報を更新
+        $item->name = $request->input('name');
+        $item->type = $request->input('type');
+        $item->detail = $request->input('detail');
+
+        // 商品情報を保存
+        $item->save();
+
+        return redirect()->route('item.index')->with('success', '商品が更新されました');
+    }
 }
